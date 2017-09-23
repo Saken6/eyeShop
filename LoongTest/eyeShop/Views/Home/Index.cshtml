@@ -1,0 +1,62 @@
+﻿@model IEnumerable<eyeShop.H1065>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="content">
+    @foreach (var item in Model)
+    {
+        <div class="goods" style="width:200px">
+            <a href="@Url.Action("Details", "Home", new { itemNo = item.Item_No })">
+                <div class="goodsImg">
+                    <img src="~/Content/images/03.jpg" class="img-thumbnail" width="200" height="200">
+                </div>
+            </a>
+            <a href="@Url.Action("Details", "Home", new { itemNo = item.Item_No })">@item.Item_Descc</a>
+        </div>
+    }
+</div>
+<div class="footer">
+    @if (Convert.ToInt32(ViewData["count"]) > 1)
+    {
+        <div class="container-fluid">
+            <div>
+                <ul class="nav navbar-nav">
+                    <li><a href="@Url.Action("Index", "Home", new { page = 1 })">首页</a></li>
+
+                    <li><a href="@Url.Action("Index", "Home", new { page=(Convert.ToInt32(ViewData["pageIndex"]) - 1)})">上一页</a></li>
+                    <li><a href="@Url.Action("Index", "Home", new { page = (Convert.ToInt32(ViewData["pageIndex"]) + 1) })">下一页</a></li>
+                    <li><a href="@Url.Action("Index", "Home", new { page = (Convert.ToInt32(ViewData["totalPage"])) })">末页</a></li>
+                    <li class="active"><a href="#">当前页@(Convert.ToInt32((ViewData["pageIndex"])))</a></li>
+                    <li class="active"><a href="#">总页数@(ViewData["totalPage"])</a></li>
+                    <li>
+                        <div style="padding:5px 0px">
+                            <form class="bs-example bs-example-form" action="@Url.Action("Index","Home")" role="form">
+                                <div class="row">
+                                    <div class="col-lg-6" style="width:150px">
+                                        <div class="input-group">
+                                            <input type="text"  name="page" class="form-control">
+                                            <span class="input-group-btn">
+                                                <input class="btn btn-default" value="GO" type="submit">
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    }
+    else
+    {
+        if (Convert.ToInt32(ViewData["count"]) < 1)
+        {
+            <h3>暂无数据</h3>
+        }
+    }
+</div>

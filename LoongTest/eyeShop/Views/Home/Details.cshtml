@@ -1,0 +1,61 @@
+﻿@model eyeShop.H1066
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<style>
+    table tr td {
+        width: 250px;
+    }
+
+    #detail {
+        float: left;
+    }
+</style>
+<div id="detail">
+    <img width="360" height="360" src="~/content/images/A191541308275.jpg" alt="Alternate Text" />
+</div>
+<div id="detail" class="detailData" style="width:500px">
+    <table class="table table-bordered">
+        <tr>
+            <td>款号</td>
+            <td>@ViewData["ourModel"]</td>
+        </tr>
+        <tr>
+            <td>架色</td>
+            <td>@Model.SPEC2</td>
+        </tr>
+        <tr>
+            <td>片色</td>
+            <td>@Model.SPEC18</td>
+        </tr>
+        <tr>
+            <td>度数</td>
+            <td>@Model.SPEC50</td>
+        </tr>
+        <tr>
+            <td>库存</td>
+            <td id="qty">@ViewData["qty"]</td>
+        </tr>
+        <tr>
+            <td>单价</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>本次预购数量</td>
+            <td>
+              
+
+                <form role="form">
+                    <div class="form-group">
+                        <input type="text" id="shop"  class="form-control" placeholder="请输入预购数量">
+                    </div>
+                </form>
+
+            </td>
+        </tr>
+
+    </table>
+</div>
